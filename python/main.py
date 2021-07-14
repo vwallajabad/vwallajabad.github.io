@@ -17,7 +17,3 @@ print(max_amount_coins)
 tax_date = 'August 23'
 
 print(tax_date)'''
-
-import database
-
-add(4,5)
