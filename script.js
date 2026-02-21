@@ -105,6 +105,15 @@
         setTimeout(() => {
             if (DATA[cmd]) {
                 print(DATA[cmd]);
+            } else if (cmd.includes("&&")) {
+                let parts = cmd.split("&&");
+
+                for (let i = 0; i < parts.length; i++) {
+                    let current = parts[i].trim();
+                    if (DATA[current]) {
+                        print(DATA[current]);
+                    }
+                }
             } else if (cmd === 'ls') {
                 print(COMMANDS.join('  '));
             } else if (cmd === 'clear') {
