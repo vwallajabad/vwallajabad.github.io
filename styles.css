@@ -21,10 +21,12 @@
             font-family: 'JetBrains Mono', monospace;
             background-color: var(--bg-color);
             background-image: 
-                radial-gradient(circle at 50% 50%, rgba(255, 95, 5, 0.05) 0%, transparent 50%),
-                linear-gradient(rgba(0, 242, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 242, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 30px 30px, 30px 30px;
+                radial-gradient(at 0% 0%, rgba(255, 95, 5, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 242, 255, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(10, 20, 40, 0.5) 0px, transparent 100%),
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px, 30px 30px;
             color: var(--text-main);
             height: 100vh;
             display: flex;
@@ -34,20 +36,16 @@
             padding: 20px;
         }
 
-        .terminal-window {
-            width: 100%;
-            max-width: 1000px;
-            height: 85vh;
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
-            backdrop-filter: blur(20px);
-            position: relative;
-        }
-
+.terminal-window {
+    background: rgba(20, 20, 25, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 80%;
+    max-width: 900px;
+}
         .terminal-header {
             background: rgba(255,255,255,0.03);
             padding: 15px 20px;
