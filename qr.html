@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume QR — Varun Wallajabad</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary-orange: #FF5F05;
+            --accent-blue: #00f2ff;
+            --bg-color: #050c16;
+            --border: rgba(255, 255, 255, 0.1);
+            --text-main: #e3e8ef;
+            --text-dim: #64748b;
+            --mac-red: #ff5f56;
+            --mac-yellow: #ffbd2e;
+            --mac-green: #27c93f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(255, 95, 5, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 242, 255, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(10, 20, 40, 0.5) 0px, transparent 100%),
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .terminal-window {
+            background: rgba(20, 20, 25, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            animation: windowAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes windowAppear {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .terminal-header {
+            background: rgba(255,255,255,0.03);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .mac-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: var(--mac-red); }
+        .yellow { background: var(--mac-yellow); }
+        .green { background: var(--mac-green); }
+
+        .header-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .content-body {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #qrcode {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        #qrcode:hover {
+            transform: scale(1.02);
+        }
+
+        .status-line {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .accent { color: var(--primary-orange); }
+        .dim { color: var(--text-dim); font-size: 12px; margin-top: 15px; }
+
+    </style>
+</head>
+<body>
+
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <div class="mac-buttons">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <span class="header-title">varun — get-resume — auth</span>
+        </div>
+        
+        <div class="content-body">
+            <div id="qrcode"></div>
+            
+            <div class="status-line">
+                <span class="accent">❯</span> Resume.pdf
+            </div>
+            
+            <div class="dim">
+                Points to: vwallajabad.dev/Resume.pdf
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            new QRCode(document.getElementById("qrcode"), {
+                text: "https://vwallajabad.dev/Resume.pdf",
+                width: 200,
+                height: 200,
+                colorDark : "#050c16",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        };
+    </script>
+
+</body>
+</html>
